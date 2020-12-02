@@ -46,13 +46,13 @@ function addManager() {
       },
       {
         type: "input",
-        message: "What is the Employee's Email?",
-        name: "email",
+        message: "What is the Employee's ID?",
+        name: "id",
       },
       {
         type: "input",
-        message: "What is the Employee's ID?",
-        name: "id",
+        message: "What is the Employee's Email?",
+        name: "email",
       },
       {
         type: "input",
@@ -69,8 +69,8 @@ function addManager() {
     .then((responseM) => {
       const newManager = new Manager(
         responseM.name,
-        responseM.email,
         responseM.id,
+        responseM.email,
         responseM.officeNumber
       );
 
@@ -93,13 +93,13 @@ function addEngineer() {
       },
       {
         type: "input",
-        message: "What is the Employee's Email?",
-        name: "email",
+        message: "What is the Employee's ID?",
+        name: "id",
       },
       {
         type: "input",
-        message: "What is the Employee's ID?",
-        name: "id",
+        message: "What is the Employee's Email?",
+        name: "email",
       },
       {
         type: "input",
@@ -116,8 +116,8 @@ function addEngineer() {
     .then((responseE) => {
       const newEngineer = new Engineer(
         responseE.name,
-        responseE.email,
         responseE.id,
+        responseE.email,
         responseE.github
       );
 
@@ -140,13 +140,13 @@ function addIntern() {
       },
       {
         type: "input",
-        message: "What is the Employee's Email?",
-        name: "email",
+        message: "What is the Employee's ID?",
+        name: "id",
       },
       {
         type: "input",
-        message: "What is the Employee's ID?",
-        name: "id",
+        message: "What is the Employee's Email?",
+        name: "email",
       },
       {
         type: "input",
@@ -163,8 +163,8 @@ function addIntern() {
     .then((responseI) => {
       const newIntern = new Intern(
         responseI.name,
-        responseI.email,
         responseI.id,
+        responseI.email,
         responseI.school
       );
       team.push(newIntern);
