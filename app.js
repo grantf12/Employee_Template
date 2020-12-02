@@ -13,6 +13,7 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+const team = []
 
 function addMember() {
     inquirer.prompt([
@@ -24,15 +25,12 @@ function addMember() {
     },
 ]).then((response) => {
     if (`${response.role}` === "Manager") {
-        // var role = "Manager"
         addManager()
     };
     if (`${response.role}` === "Engineer") {
-        // var role = "Engineer"
         addEngineer()
     };
     if (`${response.role}` === "Intern") {
-        // var role = "Intern"
         addIntern()
     };
     
@@ -67,10 +65,13 @@ function addManager() {
         },
     ]).then((responseM) =>{
         const newManager = new Manager(responseM.name, responseM.email, responseM.id, responseM.officeNumber);
-        console.log(newManager)
+
+        team.push(newManager)
+
         if (responseM.anotherOne === "Yes") {
             addMember();
         }
+        else(console.log(render(team)));
     })
 };
 function addEngineer() {
@@ -103,10 +104,13 @@ function addEngineer() {
     },
     ]).then((responseE) => {
         const newEngineer = new Engineer(responseE.name, responseE.email, responseE.id, responseE.github)
-        console.log(newEngineer)
+        
+        team.push(newEngineer)
+
         if (responseE.anotherOne === "Yes") {
             addMember();
         }
+        else(render(team));
     })
 };
 function addIntern() {
@@ -139,16 +143,20 @@ function addIntern() {
         },
     ]).then((responseI) =>{
         const newIntern = new Intern(responseI.name, responseI.email, responseI.id, responseI.school)
-        console.log(newIntern)
+        team.push(newIntern)
+
         if (responseI.anotherOne === "Yes") {
             addMember();
         }
+        else(render(team));
     })
 };
 addMember();
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
@@ -156,9 +164,11 @@ addMember();
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
 
+
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
 // employee type.
+
 
 // HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
 // and Intern classes should all extend from a class named Employee; see the directions
